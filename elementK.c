@@ -1,24 +1,39 @@
 #include <stdio.h>
-#include <limits.h>
-void main(){
-	int a[] = { 3, 10, 59, 32, 116, 1, 2, 10, 10, 10 };
-	int elementK = 0;
-	// max = so lon nhat
-    //maxK = so nho nhat
-	int max = INT_MAX, maxK = INT_MIN;
-	// input element lon thu K can tim
-	printf("Input: \n");
-	scanf_s("%d", &elementK);
-	for (int i = 0; i < elementK; i++)
+#include <stdlib.h>
+int main(int argc, char* argv[])
+{
+	int totalRecord = 0;
+	int pageSize = 0;
+	int pageIndex = 0;
+	int numberPerPage = 3;
+	printf("Input total record: ");
+	scanf_s("%d", &totalRecord);
+	printf("\nInput page size: ");
+	scanf_s("%d", &pageSize);
+	printf("\nInput page index: ");
+	scanf_s("%d", &pageIndex);
+	int totalPage = (totalRecord / pageSize) + (totalRecord % pageSize > 0);
+	printf("Total Page: %d\n", totalPage);
+	int record = pageSize * (pageIndex - 1) + 1;
+	int i = 1;
+	while (i <= pageSize && record <= totalRecord)
 	{
-		//Gan maxK = so nho nhat
-		maxK = INT_MIN;
-		for (int j = 0; j < 10; j++)
-		{
-			if (a[j] > maxK && a[j] < max)
-				maxK = a[j];
-		}
-		max = maxK;
+		printf("Record %d\n", record);
+		record++;
+		i++;
 	}
-	printf("Max element %d is %d", elementK, max);
+	int numberPage = pageIndex - (numberPerPage / 2);
+	if (numberPage > totalPage - numberPerPage + 1)
+		numberPage = totalPage - numberPerPage + 1;
+	if (totalPage <= numberPerPage)
+		numberPage = 1;
+	i = 1;
+	printf("Page:");
+	while (i <= numberPerPage && numberPage <= totalPage)
+	{
+		printf("[%d] ", numberPage);
+		numberPage++;
+		i++;
+	}
+
 }
