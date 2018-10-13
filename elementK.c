@@ -5,7 +5,7 @@ int main(int argc, char* argv[])
 	int totalRecord = 0;
 	int pageSize = 0;
 	int pageIndex = 0;
-	int numberPerPage = 3;
+	int numberPerPage = 10;
 	printf("Input total record: ");
 	scanf_s("%d", &totalRecord);
 	printf("\nInput page size: ");
